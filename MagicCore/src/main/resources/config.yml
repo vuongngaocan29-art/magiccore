@@ -1,0 +1,24 @@
+# ===================================
+#   MagicCore - Aetheria Config
+# ===================================
+
+mana:
+  base-max: 50          # Mana tối đa ở Magic Level 1
+  per-level: 5           # Mana tối đa cộng thêm mỗi Magic Level
+  regen-per-second: 1.5   # Mana hồi mỗi giây
+
+stamina:
+  base-max: 100
+  regen-per-second: 4.0
+
+magic-level:
+  xp-per-cast: 4          # XP nhận được mỗi lần cast phép thành công
+  xp-to-next-level-base: 50   # XP cần cho level 2, tăng dần theo công thức bên dưới
+  xp-growth-multiplier: 1.15  # Mỗi level cần thêm x1.15 XP so với level trước
+
+actionbar:
+  enabled: true
+  update-interval-ticks: 20   # 1 giây
+
+houses:
+  starting-points: 0

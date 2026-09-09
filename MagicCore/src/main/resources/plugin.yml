@@ -1,0 +1,29 @@
+name: MagicCore
+version: '1.0.0'
+main: vn.aetheria.magiccore.MagicCore
+api-version: '1.21'
+author: Aetheria
+description: Core magic system for Aetheria - Mana, Spell, House, Class, Magic Level
+
+commands:
+  magic:
+    description: Xem chỉ số phép thuật của bạn
+    usage: /magic
+  house:
+    description: Quản lý Nhà (House)
+    usage: /house <info|join|top>
+  class:
+    description: Quản lý Lớp (Class)
+    usage: /class <info|choose>
+  spell:
+    description: Học và sử dụng phép
+    usage: /spell <list|cast>
+  magicadmin:
+    description: Lệnh quản trị hệ thống phép thuật
+    usage: /magicadmin <housepoints|setlevel|setmana>
+    permission: magiccore.admin
+
+permissions:
+  magiccore.admin:
+    description: Cho phép dùng lệnh quản trị MagicCore
+    default: op
