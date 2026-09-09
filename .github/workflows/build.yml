@@ -1,0 +1,33 @@
+name: Build MagicCore
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'maven'
+
+      - name: Build with Maven
+        working-directory: MagicCore
+        run: mvn -B clean package
+
+      - name: Upload jar artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MagicCore-jar
+          path: MagicCore/target/MagicCore.jar
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
