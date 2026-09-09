@@ -51,6 +51,8 @@ public class DataManager {
             data.setStamina(yaml.getDouble("stamina", baseMaxStamina));
             data.setMaxStamina(yaml.getDouble("max-stamina", baseMaxStamina));
             data.setYear(yaml.getInt("year", 1));
+            data.setActiveSpellId(yaml.getString("active-spell", null));
+            data.setReceivedStarterWand(yaml.getBoolean("received-starter-wand", false));
 
             String houseStr = yaml.getString("house");
             if (houseStr != null) {
@@ -88,6 +90,8 @@ public class DataManager {
         yaml.set("stamina", data.getStamina());
         yaml.set("max-stamina", data.getMaxStamina());
         yaml.set("year", data.getYear());
+        yaml.set("active-spell", data.getActiveSpellId());
+        yaml.set("received-starter-wand", data.hasReceivedStarterWand());
         yaml.set("house", data.getHouse() != null ? data.getHouse().name() : null);
         yaml.set("class", data.getPlayerClass() != null ? data.getPlayerClass().name() : null);
 
