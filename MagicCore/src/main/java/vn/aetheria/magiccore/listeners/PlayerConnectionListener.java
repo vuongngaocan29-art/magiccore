@@ -1,10 +1,13 @@
 package vn.aetheria.magiccore.listeners;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import vn.aetheria.magiccore.MagicCore;
+import vn.aetheria.magiccore.data.PlayerMagicData;
+import vn.aetheria.magiccore.util.WandItem;
 
 public class PlayerConnectionListener implements Listener {
 
@@ -16,7 +19,13 @@ public class PlayerConnectionListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        plugin.getDataManager().load(event.getPlayer().getUniqueId());
+        Player player = event.getPlayer();
+        PlayerMagicData data = plugin.getDataManager().load(player.getUniqueId());
+
+        if (!data.hasReceivedStarterWand()) {
+            player.getInventory().addItem(WandItem.create(plugin));
+            data.setReceivedStarterWand(true);
+        }
     }
 
     @EventHandler
