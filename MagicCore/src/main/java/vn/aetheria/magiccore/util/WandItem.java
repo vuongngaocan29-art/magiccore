@@ -33,7 +33,7 @@ public final class WandItem {
                 ChatColor.GRAY + "Chuột phải: dùng phép đang chọn",
                 ChatColor.GRAY + "Xem /magic để biết phép đang chọn"
         ));
-        meta.addEnchant(Enchantment.DURABILITY, 1, true); // chỉ để có ánh sáng "enchanted glint"
+        meta.addEnchant(Enchantment.UNBREAKING, 1, true); // chỉ để có ánh sáng "enchanted glint"
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         meta.getPersistentDataContainer().set(wandKey(plugin), PersistentDataType.BYTE, (byte) 1);
 
