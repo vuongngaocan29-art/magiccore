@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import vn.aetheria.magiccore.commands.*;
 import vn.aetheria.magiccore.gui.GUIListener;
 import vn.aetheria.magiccore.listeners.PlayerConnectionListener;
+import vn.aetheria.magiccore.listeners.WandListener;
 import vn.aetheria.magiccore.manager.DataManager;
 import vn.aetheria.magiccore.manager.HouseManager;
 import vn.aetheria.magiccore.manager.ManaManager;
@@ -34,6 +35,7 @@ public class MagicCore extends JavaPlugin {
         // Listeners
         getServer().getPluginManager().registerEvents(new PlayerConnectionListener(this), this);
         getServer().getPluginManager().registerEvents(new GUIListener(this), this);
+        getServer().getPluginManager().registerEvents(new WandListener(this), this);
 
         // Commands
         getCommand("magic").setExecutor(new MagicCommand(this));
