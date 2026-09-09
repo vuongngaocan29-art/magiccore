@@ -28,6 +28,4 @@ jobs:
         with:
           name: MagicCore-jar
           path: MagicCore/target/MagicCore.jar
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+       
