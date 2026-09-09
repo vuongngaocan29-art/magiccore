@@ -6,9 +6,11 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import vn.aetheria.magiccore.MagicCore;
 import vn.aetheria.magiccore.data.House;
 import vn.aetheria.magiccore.data.PlayerMagicData;
+import vn.aetheria.magiccore.util.WandItem;
 
 public class MagicAdminCommand implements CommandExecutor {
 
@@ -34,6 +36,7 @@ public class MagicAdminCommand implements CommandExecutor {
             case "housepoints" -> handleHousePoints(sender, args);
             case "setlevel" -> handleSetLevel(sender, args);
             case "setmana" -> handleSetMana(sender, args);
+            case "givewand" -> handleGiveWand(sender, args);
             default -> sender.sendMessage(ChatColor.RED + "Dùng: /magicadmin <housepoints|setlevel|setmana> ...");
         }
         return true;
@@ -89,6 +92,21 @@ public class MagicAdminCommand implements CommandExecutor {
         } catch (NumberFormatException e) {
             sender.sendMessage(ChatColor.RED + "Level không hợp lệ.");
         }
+    }
+
+    // /magicadmin givewand <player>
+    private void handleGiveWand(CommandSender sender, String[] args) {
+        if (args.length < 2) {
+            sender.sendMessage(ChatColor.RED + "Dùng: /magicadmin givewand <player>");
+            return;
+        }
+        Player target = Bukkit.getPlayerExact(args[1]);
+        if (target == null) {
+            sender.sendMessage(ChatColor.RED + "Người chơi không online.");
+            return;
+        }
+        target.getInventory().addItem(WandItem.create(plugin));
+        sender.sendMessage(ChatColor.GREEN + "Đã đưa Đũa Phép cho " + target.getName());
     }
 
     // /magicadmin setmana <player> <amount>
