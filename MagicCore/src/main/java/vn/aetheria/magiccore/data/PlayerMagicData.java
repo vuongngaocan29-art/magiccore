@@ -25,6 +25,9 @@ public class PlayerMagicData {
     private PlayerClass playerClass; // null nếu chưa chọn Class
     private int year = 1;      // Năm học (1-5)
 
+    private String activeSpellId; // phép đang được chọn trên đũa phép
+    private boolean receivedStarterWand = false;
+
     // spellId -> thời điểm (millis) có thể cast lại
     private final Map<String, Long> cooldowns = new HashMap<>();
 
@@ -123,6 +126,22 @@ public class PlayerMagicData {
 
     public void setYear(int year) {
         this.year = Math.max(1, Math.min(5, year));
+    }
+
+    public String getActiveSpellId() {
+        return activeSpellId;
+    }
+
+    public void setActiveSpellId(String activeSpellId) {
+        this.activeSpellId = activeSpellId;
+    }
+
+    public boolean hasReceivedStarterWand() {
+        return receivedStarterWand;
+    }
+
+    public void setReceivedStarterWand(boolean receivedStarterWand) {
+        this.receivedStarterWand = receivedStarterWand;
     }
 
     public boolean isOnCooldown(String spellId) {
